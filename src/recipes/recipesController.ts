@@ -10,8 +10,8 @@ export class RecipesController extends Controller {
   }
 
   @Get('')
-  public async getRecipeByName(@Query() name?: string): Promise<Recipe | Recipe[]> {
-    return new RecipesService().getList(name)
+  public async getRecipeByName(@Query() title?: string): Promise<Recipe | Recipe[]> {
+    return new RecipesService().getList(title)
   }
 
   @SuccessResponse('201', 'Created')

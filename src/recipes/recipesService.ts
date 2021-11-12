@@ -8,17 +8,19 @@ export type RecipeCreationParams = Pick<Recipe, 'temp' | 'title' | 'time' | 'ing
 export class RecipesService {
   public get(id: number | undefined): Recipe {
     const recipe = db.get(id)
+
     return recipe ? recipe : {}
   }
 
-  public getList(name: string | undefined): Recipe {
+  public getList(title: string | undefined): Recipe[] {
     const recipeList = db.JSON()
-    if (!name) {
-      return recipeList
+    const recipeArray: Recipe[] = Object.values(recipeList)
+
+    if (!title) {
+      return recipeArray
     }
 
-    const filteredRecipes = recipeList.filter(recipe => recipes[key].name === id)
-    return filteredRecipes
+    return recipeArray.filter((recipe: Recipe) => recipe.title === title)
   }
 
   public create(RecipeCreationParams: RecipeCreationParams): Recipe {
@@ -27,7 +29,9 @@ export class RecipesService {
       id: id,
       ...RecipeCreationParams,
     }
+
     db.set(id, recipe)
+
     return recipe
   }
 }
