@@ -11,7 +11,7 @@ export class RecipesController extends Controller {
 
   @Get('')
   public async getRecipeByName(@Query() name?: string): Promise<Recipe | Recipe[]> {
-    return new RecipesService().get(name)
+    return new RecipesService().getList(name)
   }
 
   @SuccessResponse('201', 'Created')

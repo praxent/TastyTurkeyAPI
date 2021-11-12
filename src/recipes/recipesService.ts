@@ -6,23 +6,19 @@ const db = new JSONdb('./data/recipes.json')
 export type RecipeCreationParams = Pick<Recipe, 'temp' | 'name' | 'time' | 'ingredients'>
 
 export class RecipesService {
-  public get(id: number | string | undefined): Recipe {
-    let recipe = db.get(id)
+  public get(id: number | undefined): Recipe {
+    const recipe = db.get(id)
+    return recipe ? recipe : {}
+  }
 
-    if (!recipe) {
-      recipe = []
-      const recipes = db.JSON()
-      if (id !== undefined) {
-        for (const key in recipes) {
-          if (recipes[key].name === id) {
-            recipe.push(recipes[key])
-          }
-        }
-      } else {
-        recipe = recipes
-      }
+  public getList(name: string | undefined): Recipe {
+    const recipeList = db.JSON()
+    if (!name) {
+      return recipeList
     }
-    return recipe
+
+    const filteredRecipes = recipeList.filter(recipe => recipes[key].name === id)
+    return filteredRecipes
   }
 
   public create(RecipeCreationParams: RecipeCreationParams): Recipe {
