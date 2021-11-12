@@ -1,7 +1,7 @@
 /node_modules/
 /build/
 /data/*.json
-
+yarn.lock
 # Mac
 .DS_Store
 
