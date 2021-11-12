@@ -1,48 +1,35 @@
 {
-    "974": {
-        "id": 974,
-        "name": "Turkey Parfait",
+    "3332": {
+        "id": 3332,
+        "title": "Turkey Parfait 6.0",
         "temp": 72,
         "time": 1,
         "ingredients": [
             "ground turkey",
             "mayo",
-            "sugar"
+            "nutmeg"
         ]
     },
-    "4628": {
-        "id": 4628,
-        "name": "Turkey Burger",
-        "temp": 400,
-        "time": 20,
-        "ingredients": [
-            "ground turkey",
-            "buns",
-            "ketchup",
-            "mayo"
-        ]
-    },
-    "8772": {
-        "id": 8772,
-        "name": "Turkey Parfait",
+    "4800": {
+        "id": 4800,
+        "title": "Turkey Parfait 1.0",
         "temp": 72,
         "time": 1,
         "ingredients": [
             "ground turkey",
             "mayo",
-            "sugar"
+            "nutmeg"
         ]
     },
-    "8956": {
-        "id": 8956,
-        "name": "Turkey Burger",
-        "temp": 400,
-        "time": 20,
+    "7825": {
+        "id": 7825,
+        "title": "Turkey Parfait 2.0",
+        "temp": 72,
+        "time": 1,
         "ingredients": [
             "ground turkey",
-            "buns",
-            "ketchup",
-            "mayo"
+            "mayo",
+            "nutmeg"
         ]
     }
 }
