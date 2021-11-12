@@ -1,4 +1,4 @@
-import { RegisterRoutes } from '../build/routes.js'
+import { RegisterRoutes } from '../build/routes'
 import express, { Response as ExResponse, Request as ExRequest } from 'express'
 import swaggerUi from 'swagger-ui-express'
 

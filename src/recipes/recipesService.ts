@@ -3,7 +3,7 @@ const JSONdb = require('simple-json-db')
 const db = new JSONdb('./data/recipes.json')
 
 // A post request should not contain an id.
-export type RecipeCreationParams = Pick<Recipe, 'temp' | 'name' | 'time' | 'ingredients'>
+export type RecipeCreationParams = Pick<Recipe, 'temp' | 'title' | 'time' | 'ingredients'>
 
 export class RecipesService {
   public get(id: number | string | undefined): Recipe {
