@@ -17,4 +17,4 @@ jobs:
       - name: Build Node App
         run: npm run build
       - name: Lint
-        run: eslint .
+        run: npm run lint
