@@ -1,0 +1,20 @@
+name: build-check
+
+on: [push]
+
+jobs:
+  build-check:
+    # skip build if [skip-ci] in commit.
+    if: "! contains(toJSON(github.event.commits.*.message), '[skip-ci]')"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - name: Setup
+        run: npm i
+      - name: Build Node App
+        run: npm run build
+      - name: Lint
+        run: npm run lint
