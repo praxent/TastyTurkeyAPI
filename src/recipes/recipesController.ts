@@ -9,9 +9,15 @@ import {
   SuccessResponse,
   Res,
   TsoaResponse,
+  Response,
 } from 'tsoa'
 import { Recipe } from './recipe'
 import { RecipesService, RecipeCreationParams } from './recipesService'
+
+interface ValidateErrorJSON {
+  message: 'Validation failed'
+  details: { [name: string]: unknown }
+}
 
 @Route('Recipes')
 export class RecipesController extends Controller {
@@ -32,6 +38,7 @@ export class RecipesController extends Controller {
     return new RecipesService().getList(title)
   }
 
+  @Response<ValidateErrorJSON>(422, 'Validation Failed')
   @SuccessResponse('201', 'Created')
   @Post()
   public async createRecipe(@Body() requestBody: RecipeCreationParams): Promise<Recipe> {
