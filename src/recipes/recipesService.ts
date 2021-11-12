@@ -9,7 +9,7 @@ export class RecipesService {
   public get(id: number | undefined): Recipe {
     const recipe = db.get(id)
 
-    return recipe ? recipe : {}
+    return recipe ? recipe : undefined
   }
 
   public getList(title: string | undefined): Recipe[] {
