@@ -1,12 +1,38 @@
-import { Body, Controller, Get, Path, Post, Put, Delete, Query, Route, SuccessResponse } from 'tsoa'
+import {
+  Body,
+  Controller,
+  Get,
+  Path,
+  Post,
+  Put,
+  Delete,
+  Query,
+  Route,
+  SuccessResponse,
+  Res,
+  TsoaResponse,
+  Response,
+} from 'tsoa'
 import { Recipe } from './recipe'
 import { RecipesService, RecipeCreationParams, RecipeUpdateParams } from './recipesService'
+
+interface ValidateErrorJSON {
+  message: 'Validation failed'
+  details: { [name: string]: unknown }
+}
 
 @Route('Recipes')
 export class RecipesController extends Controller {
   @Get('{RecipeId}')
-  public async getRecipe(@Path() RecipeId: number): Promise<Recipe> {
-    return new RecipesService().get(RecipeId)
+  public async getRecipe(
+    @Path() RecipeId: number,
+    @Res() notFoundResponse: TsoaResponse<404, { reason: string }>,
+  ): Promise<Recipe> {
+    const recipe = new RecipesService().get(RecipeId)
+    if (!recipe) {
+      return notFoundResponse(404, { reason: 'RecipeId not found' })
+    }
+    return recipe
   }
 
   @Get('')
@@ -14,6 +40,7 @@ export class RecipesController extends Controller {
     return new RecipesService().getList(title)
   }
 
+  @Response<ValidateErrorJSON>(422, 'Validation Failed')
   @SuccessResponse('201', 'Created')
   @Post()
   public async createRecipe(@Body() requestBody: RecipeCreationParams): Promise<Recipe> {
