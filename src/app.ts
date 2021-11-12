@@ -3,6 +3,7 @@ import express, { Response as ExResponse, Request as ExRequest, NextFunction } f
 import swaggerUi from 'swagger-ui-express'
 import { ValidateError } from 'tsoa'
 
+const cors = require('cors')
 export const app = express()
 
 // Use body parser to read sent json payloads
@@ -11,6 +12,7 @@ app.use(
     extended: true,
   }),
 )
+app.use(cors({ origin: 'http://localhost:3000' }))
 app.use(express.json())
 
 app.use('/docs', swaggerUi.serve, async (_req: ExRequest, res: ExResponse) => {
