@@ -13,7 +13,7 @@ jobs:
         with:
           node-version: 14
       - name: Setup
-        run: npm ci
+        run: npm i
       - name: Build Node App
         run: npm run build
       - name: Lint
