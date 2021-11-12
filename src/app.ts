@@ -12,7 +12,7 @@ app.use(
     extended: true,
   }),
 )
-app.use(cors({ origin: 'http://localhost:3000' }))
+app.use(cors({ origin: 'https://praxent.github.io/TastyTurkey/' }))
 app.use(express.json())
 
 app.use('/docs', swaggerUi.serve, async (_req: ExRequest, res: ExResponse) => {
